@@ -14,9 +14,7 @@ class BookController extends Controller
      */
     public function index()
     {
-        //return response(Book::all(),200);
-		return response (Book::with('author','publishers')->get(),200);
- 
+        return response (Book::with('author','publishers')->get(),200);
     }
 
     /**
@@ -26,8 +24,7 @@ class BookController extends Controller
      */
     public function create()
     {
-		$model = new Book();
-		return response($model->getFillable(),200);
+		//route is excluded with Route::apiResource() in \routes\api.php
     }
 
     /**
@@ -49,7 +46,7 @@ class BookController extends Controller
      */
     public function show(Book $book)
     {
-        //
+       	return response ($book->load('author', 'publishers'),200);
     }
 
     /**
@@ -60,7 +57,7 @@ class BookController extends Controller
      */
     public function edit(Book $book)
     {
-        //
+        //route is excluded with Route::apiResource() in \routes\api.php
     }
 
     /**
