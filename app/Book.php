@@ -6,7 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Book extends Model
 {
-    protected $fillable = ['title','price','abstract','author_id'];
+    protected $hidden = ['id','author_id','created_at','updated_at','pivot'];
+	protected $fillable = ['title','price','abstract','author_id'];
 
 	public function author() {
 	return $this->belongsTo('App\Author');

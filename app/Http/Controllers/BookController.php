@@ -14,7 +14,9 @@ class BookController extends Controller
      */
     public function index()
     {
-        return response(Book::all(),200);
+        //return response(Book::all(),200);
+		return response (Book::with('author','publishers')->get(),200);
+ 
     }
 
     /**
